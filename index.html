@@ -1,0 +1,36 @@
+<html>
+    <body onkeydown="what()">
+        <span style="position: absolute; top: 560; left: 0;" id="sp">
+        <img src="football.png" width="20%"></img>
+        </span>
+    </body>
+    <script>
+        let ref = document.getElementById("sp");
+        function what(){
+            //Right Arrow Key
+            if(event.keyCode==39){
+                ref.style.left=parseInt(ref.style.left)+10;
+            }
+            //Left Arrow Key
+            if(event.keyCode==37){
+                ref.style.left=parseInt(ref.style.left)-10;
+            }
+            //Space Bar
+            if(event.keyCode==32){
+                let timer1;
+                let newElement = document.createElement("span");
+                newElement.innerHTML="<img src='football.png' width='20%'></img>";
+                newElement.style="position:absolute; top:560;"
+                newElement.style.left=ref.style.left;
+                document.body.appendChild(newElement);
+
+                timer1 = setInterval(function(){
+                    newElement.style.top=parseInt(newElement.style.top)-10;
+                    if(parseInt(newElement.style.top)<10){
+                        clearInterval(timer1);
+                    }
+                },100)
+            }
+        }
+    </script>
+</html>
